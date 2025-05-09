@@ -15,12 +15,13 @@ html {
 :root {
 	--accent: #C7A9FF;
 	--accent-dark: #4B0082;
-	--black: 15, 18, 25;
-	--white: 255, 255, 255;
-	--gray: 96, 115, 159;
-	--gray-light: 229, 233, 240;
-	--gray-dark: 34, 41, 57;
-	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--accent-light: #E6D5FF;
+	--black: rgb(15, 18, 25);
+	--white: rgb(255, 255, 255);
+	--gray: rgb(96, 115, 159);
+	--gray-light: rgb(229, 233, 240);
+	--gray-dark: rgb(50, 50, 50);
+	--gray-gradient: rgba(229, 233, 240, 50%), #fff;
 	--box-shadow:
 		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
@@ -52,11 +53,11 @@ section {
 	color: inherit;
 	border-bottom: 2px solid transparent;
 	transition: border-color 0.3s;
-  }
-  
-  .nav-link.active {
+}
+
+.nav-link.active {
 	border-bottom: 2px solid var(--accent);
-  }
+}
 
 body {
 	font-family: 'Atkinson', sans-serif;

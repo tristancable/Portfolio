@@ -1,8 +1,8 @@
 <section id="home" class="py-20" data-aos="fade-in">
     <h1
-        class="text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-gray-200 mt-8 animate-pulse"
+        class="text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-gray-200 mt-8"
     >
-        Hello, my name is <span class="text-accent">Tristan</span>
+        Hello, my name is <span class="text-accent animate-pulse">Tristan</span>
     </h1>
     <div class="terminal">
         <div class="terminal-header">
@@ -43,11 +43,25 @@
     }
 
     .text-accent {
-        color: var(--accent-dark);
+        background: linear-gradient(
+            90deg,
+            var(--accent-dark),
+            var(--accent),
+            var(--accent-dark)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     html.dark-mode .text-accent {
-        color: var(--accent);
+        background: linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light),
+            var(--accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     html.dark-mode h1 {

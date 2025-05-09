@@ -46,7 +46,7 @@ import { SITE_TITLE } from "../consts";
 		z-index: 1000;
 		margin: 0;
 		padding: 0 1em;
-		background: white;
+		background: var(--white);
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 		height: 60px; /* Set a fixed height for the navbar */
 		overflow: visible; /* Ensure the logo can overflow the navbar if needed */
@@ -85,6 +85,10 @@ import { SITE_TITLE } from "../consts";
 		position: relative;
 	}
 
+	html.dark-mode nav a {
+		color: var(--white);
+	}
+
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent-dark);
@@ -114,6 +118,11 @@ import { SITE_TITLE } from "../consts";
 		background-color: rgb(67, 67, 67);
 		color: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	}
+
+	body {
+		background: linear-gradient(rgba(229, 233, 240, 50%), rgb(255, 255, 255));
+		color: black;
 	}
 
 	html.dark-mode body {

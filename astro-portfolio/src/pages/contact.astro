@@ -1,51 +1,147 @@
-<section id="contact" data-aos="fade-in">
-    <h1>Hello, my name is Tristan Cable</h1>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
+<section id="contact" class="py-20" data-aos="fade-in">
+    <h1 class="text-4xl sm:text-5xl font-bold text-center mb-8">Contact Me</h1>
+    <form
+        id="contactForm"
+        class="max-w-lg mx-auto bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg"
+    >
+        <div class="mb-4">
+            <label for="name" class="block font-bold mb-2"> Name </label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
+        <div class="mb-4">
+            <label for="email" class="block font-bold mb-2"> Email </label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+        </div>
+        <div class="mb-4">
+            <label for="message" class="block font-bold mb-2"> Message </label>
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            ></textarea>
+        </div>
+        <button
+            type="submit"
+            class="submit w-full font-bold py-3 px-6 rounded-lg transition duration-300"
+        >
+            Send Message
+        </button>
+        <p id="formResponse" class="mt-4 text-center text-green-500 hidden">
+            Your message has been sent successfully!
+        </p>
+    </form>
 </section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contactForm");
+        const formResponse = document.getElementById("formResponse");
+
+        if (form) {
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault(); // Prevent the default form submission behavior
+
+                const formData = new FormData(form as HTMLFormElement);
+
+                try {
+                    const response = await fetch(
+                        "https://formspree.io/f/xwpoqooy",
+                        {
+                            method: "POST",
+                            headers: {
+                                Accept: "application/json",
+                            },
+                        },
+                    );
+
+                    if (response.ok) {
+                        if (formResponse) {
+                            formResponse.textContent =
+                                "Your message has been sent successfully!";
+                            formResponse.classList.remove("hidden");
+                        }
+                        (form as HTMLFormElement).reset(); // Clear the form fields
+                    } else {
+                        if (formResponse) {
+                            formResponse.textContent =
+                                "Something went wrong. Please try again.";
+                            formResponse.classList.remove("hidden");
+                            formResponse.classList.add("text-red-500");
+                        }
+                    }
+                } catch (error) {
+                    if (formResponse) {
+                        formResponse.textContent =
+                            "An error occurred. Please try again.";
+                        formResponse.classList.remove("hidden");
+                        formResponse.classList.add("text-red-500");
+                    }
+                }
+            });
+        }
+    });
+</script>
+
+<style>
+    section {
+        padding: 8rem 1rem;
+    }
+
+    form {
+        background-color: var(--gray-light);
+        color: var(--black);
+    }
+
+    html.dark-mode form {
+        background-color: var(--gray-dark);
+        color: var(--white);
+    }
+
+    input,
+    textarea {
+        background-color: var(--white);
+        color: var(--black);
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: var(--accent);
+        outline: none;
+        box-shadow: 0 0 0 2px var(--accent-dark);
+    }
+
+    html.dark-mode input:focus,
+    html.dark-mode textarea:focus {
+        border-color: var(--accent-light);
+        outline: none;
+        box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .submit {
+        background: var(--accent-dark);
+        color: var(--white);
+    }
+
+    html.dark-mode .submit {
+        background: var(--accent);
+        color: var(--black);
+    }
+
+    #formResponse.hidden {
+        display: none;
+    }
+</style>
