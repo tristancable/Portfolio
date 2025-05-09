@@ -6,7 +6,7 @@ import { SITE_TITLE } from "../consts";
 <header>
 	<nav>
 		<h2>
-			<a href="/">
+			<a href="#home">
 				<img src="/TCLogo.png" alt="TC Logo" class="logo" />
 			</a>
 		</h2>
@@ -87,6 +87,10 @@ import { SITE_TITLE } from "../consts";
 
 	nav a.active {
 		text-decoration: none;
+		border-bottom-color: var(--accent-dark);
+	}
+
+	html.dark-mode nav a.active {
 		border-bottom-color: var(--accent);
 	}
 
@@ -152,6 +156,20 @@ import { SITE_TITLE } from "../consts";
 				console.log("Dark mode enabled:", isDarkMode); // Debug log
 				themeToggleButton.textContent = isDarkMode ? "☀️" : "🌙";
 				localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+			});
+		}
+	});
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const homeButton = document.querySelector('a[href="#home"]'); // Select the Home button
+
+		if (homeButton) {
+			homeButton.addEventListener("click", (event) => {
+				event.preventDefault();
+				window.scrollTo({
+					top: 0,
+					behavior: "smooth",
+				});
 			});
 		}
 	});

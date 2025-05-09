@@ -21,16 +21,35 @@ import "aos/dist/aos.css";
 	<body>
 		<Header />
 		<main>
-			<Home />
-			<About />
-			<Skills />
-			<Career />
-			<Projects />
-			<Contact />
+			<section>
+				<Home />
+			</section>
+			<section>
+				<About />
+			</section>
+			<section>
+				<Skills />
+			</section>
+			<section>
+				<Career />
+			</section>
+			<section>
+				<Projects />
+			</section>
+			<section>
+				<Contact />
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	section {
+		padding: 5rem 1rem; /* Add vertical padding to each section */
+		margin-bottom: 5rem; /* Add space between sections */
+	}
+</style>
 
 <script>
 	import AOS from "aos";

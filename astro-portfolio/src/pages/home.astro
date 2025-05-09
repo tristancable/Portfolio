@@ -1,51 +1,253 @@
-<section id="home" data-aos="fade-in">
-    <h1>Hello, my name is Tristan Cable</h1>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
+<section id="home" class="py-20" data-aos="fade-in">
+    <h1
+        class="text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-gray-200 mt-8 animate-pulse"
+    >
+        Hello, my name is <span class="text-accent">Tristan</span>
+    </h1>
+    <div class="terminal">
+        <div class="terminal-header">
+            <div class="header-left">
+                <img src="/cmd-icon.png" alt="CMD" class="terminal-icon" />
+                <div class="terminal-title">Command Prompt</div>
+            </div>
+            <div class="window-controls">
+                <button class="minimize"
+                    ><span class="minimize-icon">—</span></button
+                >
+                <button class="maximize"
+                    ><span class="maximize-icon">▢</span></button
+                >
+                <button class="close">×</button>
+            </div>
+        </div>
+        <div class="terminal-body">
+            <p>
+                C:\Users\Tristan> I am a<span id="typewriter"></span>
+            </p>
+        </div>
+    </div>
 </section>
+
+<style>
+    section {
+        padding: 4rem 1rem; /* Add padding to each section */
+        scroll-margin-top: 4rem; /* Adjust for sticky navigation */
+    }
+
+    section#home {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        justify-content: center; /* Center items vertically */
+        align-items: center; /* Center items horizontally */
+        height: 90vh; /* Make the section take up the full viewport height */
+    }
+
+    .text-accent {
+        color: var(--accent-dark);
+    }
+
+    html.dark-mode .text-accent {
+        color: var(--accent);
+    }
+
+    html.dark-mode h1 {
+        color: var(--white);
+    }
+
+    .animated-name {
+        animation: fadeInOut 2s ease-in-out infinite; /* Constant animation */
+    }
+
+    @keyframes fadeInOut {
+        0%,
+        100% {
+            opacity: 0; /* Fully transparent at the start and end */
+        }
+        50% {
+            opacity: 1; /* Fully visible at the midpoint */
+        }
+    }
+
+    /* wrap icon + title */
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        /* if you want it flush, remove left padding on .terminal-header or set padding-left: 0 */
+    }
+
+    /* size the icon to fit the 32px header */
+    .terminal-icon {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+
+    /* Container */
+    .terminal {
+        width: 600px;
+        max-width: 100%;
+        margin: 20px auto;
+        background: #000;
+        border: 1px solid #3c3c3c;
+        border-radius: 0;
+        font-family: "Consolas", "Courier New", monospace;
+    }
+
+    /* Title Bar */
+    .terminal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 32px;
+        /* only keep left padding, drop the right */
+        padding-left: 10px;
+        padding-right: 0;
+        background: var(--accent-dark);
+        color: #fff;
+        border-bottom: 1px solid #1e1e1e;
+    }
+
+    html.dark-mode .terminal-header {
+        background: var(--accent);
+    }
+
+    .terminal-title {
+        font-family: "Segoe UI", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    /* Window Controls */
+    .window-controls {
+        display: flex;
+        align-items: center;
+        /* gap: 4px; */
+        /* ensure it's flush right */
+        margin-right: 0;
+    }
+
+    /* keep buttons flex-centered */
+    .window-controls button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    /* default font-sizes */
+    .window-controls .minimize-icon,
+    .window-controls .maximize-icon {
+        font-size: 14px;
+        line-height: 1;
+        position: relative;
+    }
+
+    .window-controls .minimize-icon {
+        top: 1px;
+    }
+    .window-controls .maximize-icon {
+        top: 1px;
+    }
+
+    .window-controls .close-icon {
+        font-size: 20px;
+        line-height: 1;
+        position: relative;
+        top: -1px;
+    }
+
+    .window-controls button:hover {
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .window-controls .close:hover {
+        background: #e81123; /* full red block */
+    }
+
+    /* Body */
+    .terminal-body {
+        padding: 16px;
+        background: #000;
+        color: #fff;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    /* Cursor */
+    #typewriter {
+        position: relative;
+    }
+
+    #typewriter::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1ch; /* one character wide */
+        height: 1em; /* match line-height */
+        background-color: #fff; /* white block */
+        animation: blinkBlock 0.7s steps(1) infinite;
+    }
+
+    #typewriter::before {
+        content: "\00a0"; /* non-breaking space */
+    }
+
+    @keyframes blinkBlock {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const typewriterElement = document.getElementById("typewriter");
+        const words = [
+            "developer.",
+            "designer.",
+            "problem solver.",
+            "creator.",
+        ];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            if (typewriterElement) {
+                typewriterElement.textContent = currentWord.substring(
+                    0,
+                    charIndex,
+                );
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                // Pause before deleting
+                isDeleting = true;
+                setTimeout(type, 1000);
+            } else if (isDeleting && charIndex === 0) {
+                // Move to the next word
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 50 : 100);
+            }
+        }
+
+        type();
+    });
+</script>
