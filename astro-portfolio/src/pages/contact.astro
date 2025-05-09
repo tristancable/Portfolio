@@ -65,6 +65,7 @@
                             headers: {
                                 Accept: "application/json",
                             },
+                            body: formData, // ← send the form fields!
                         },
                     );
 
@@ -73,6 +74,9 @@
                             formResponse.textContent =
                                 "Your message has been sent successfully!";
                             formResponse.classList.remove("hidden");
+                            setTimeout(() => {
+                                formResponse.classList.add("hidden");
+                            }, 5000);
                         }
                         (form as HTMLFormElement).reset(); // Clear the form fields
                     } else {
@@ -81,6 +85,9 @@
                                 "Something went wrong. Please try again.";
                             formResponse.classList.remove("hidden");
                             formResponse.classList.add("text-red-500");
+                            setTimeout(() => {
+                                formResponse.classList.add("hidden");
+                            }, 5000);
                         }
                     }
                 } catch (error) {
@@ -89,6 +96,9 @@
                             "An error occurred. Please try again.";
                         formResponse.classList.remove("hidden");
                         formResponse.classList.add("text-red-500");
+                        setTimeout(() => {
+                            formResponse.classList.add("hidden");
+                        }, 5000);
                     }
                 }
             });
