@@ -11,7 +11,7 @@
 			<img
 				src="/TCLogo.png"
 				alt="Tristan Cable"
-				class="w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-accent-dark dark:border-accent transition-shadow shadow-lg hover:shadow-xl"
+				class="pfp w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-accent-dark dark:border-accent transition-shadow shadow-lg hover:shadow-xl"
 			/>
 		</div>
 
@@ -36,20 +36,29 @@
 
 			<ul class="list-disc list-inside space-y-4 mb-6">
 				<li>
-					💻 <strong>Tech Stack:</strong> JavaScript, TypeScript, C#, Astro,
-					React, .NET MAUI, Tailwind CSS
+					💻 <strong>Tech Stack:</strong><br />
+					<em>Languages:</em> HTML, CSS, JavaScript (ES6+), TypeScript,
+					Python, Java, C#;<br />
+					<em>Front-End:</em> Astro, Next.js, React, Vue.js, Tailwind CSS;<br
+					/>
+					<em>Back-End:</em> Node.js, Express.js, .NET;<br />
+					<em>Mobile/Desktop:</em> .NET MAUI;<br />
+					<em>Databases:</em> MySQL, MongoDB;<br />
+					<em>Testing:</em> xUnit;<br />
+					<em>Deployment & DevOps:</em> GitHub, Vercel, Docker
 				</li>
-				<li>
-					🚗 <strong>Car Enthusiast:</strong> Owner of a modified WRX (305whp
-					@ 26psi), custom dyno tunes, coilovers & more
+
+				<!-- <li>
+					🚗 <strong>Car Enthusiast:</strong> Owner of a 2002 Subaru WRX
+					(305whp @ 26psi), custom dyno tunes, big turbo & more
 				</li>
 				<li>
 					📷 <strong>Photography:</strong> Static & rolling shots of cars,
 					experimenting with vintage-look filters
-				</li>
+				</li> -->
 				<li>
-					🎮 <strong>Hobbies:</strong> Anime, character design, and building
-					Discord bots for my Japanese-themed server “Kami Grove”
+					🎯 <strong>Interests:</strong> Japan, cars, snowboarding, dirt biking,
+					anime, photography, and learning new technologies
 				</li>
 			</ul>
 
@@ -89,6 +98,18 @@
 
 	section#about img {
 		max-width: 48%;
+	}
+
+	.pfp {
+		width: 100%;
+		height: auto;
+		border-radius: 50%;
+		border: 4px solid var(--accent-dark);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+	}
+
+	html.dark-mode .pfp {
+		border: 4px solid var(--accent);
 	}
 
 	.container {

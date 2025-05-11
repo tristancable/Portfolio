@@ -144,10 +144,26 @@
     .submit {
         background: var(--accent-dark);
         color: var(--white);
+        transition:
+            transform 0.3s ease,
+            background-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .submit:hover {
+        background: var(--accent);
+        color: var(--white);
+        transform: scale(1.05); /* Slightly enlarge the button */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
     }
 
     html.dark-mode .submit {
         background: var(--accent);
+        color: var(--black);
+    }
+
+    html.dark-mode .submit:hover {
+        background: var(--accent-light);
         color: var(--black);
     }
 

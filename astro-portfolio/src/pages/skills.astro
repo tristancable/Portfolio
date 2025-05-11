@@ -1,51 +1,153 @@
-<section id="skills" data-aos="fade-in">
-    <h1>Hello, my name is Tristan Cable</h1>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
-    <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template.
-    </p>
+<section
+    id="skills"
+    class="py-20 bg-gray-100 dark:bg-gray-900 scroll-mt-16"
+    data-aos="fade-in"
+>
+    <div class="container mx-auto px-6 md:px-12 lg:px-16">
+        <h2 class="text-4xl font-extrabold mb-8 text-center">My Skills</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Languages -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3
+                    class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100"
+                >
+                    Languages
+                </h3>
+                <ul class="list-disc list-inside text-gray-700">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>TypeScript</li>
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>C#</li>
+                </ul>
+            </div>
+
+            <!-- Front-End -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3
+                    class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100"
+                >
+                    Front-End
+                </h3>
+                <ul
+                    class="list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
+                    <li>Astro</li>
+                    <li>Next.js</li>
+                    <li>React</li>
+                    <li>Vue.js</li>
+                    <li>Tailwind CSS</li>
+                </ul>
+            </div>
+
+            <!-- Back-End -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3
+                    class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100"
+                >
+                    Back-End
+                </h3>
+                <ul
+                    class="list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
+                    <li>Node.js</li>
+                    <li>Express.js</li>
+                    <li>.NET</li>
+                </ul>
+            </div>
+
+            <!-- Mobile/Desktop -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3
+                    class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100"
+                >
+                    Mobile/Desktop
+                </h3>
+                <ul
+                    class="list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
+                    <li>.NET MAUI</li>
+                </ul>
+            </div>
+
+            <!-- Databases -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3
+                    class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100"
+                >
+                    Databases
+                </h3>
+                <ul
+                    class="list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
+                    <li>MySQL</li>
+                    <li>MongoDB</li>
+                </ul>
+            </div>
+
+            <!-- Deployment & DevOps -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h3
+                    class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100"
+                >
+                    Deployment & DevOps
+                </h3>
+                <ul
+                    class="list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
+                    <li>GitHub</li>
+                    <li>Vercel</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
+
+<style>
+    section#skills {
+        background-color: var(--gray-light);
+        color: var(--gray-dark);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        width: 100%;
+        padding: 4rem 2rem;
+        scroll-margin-top: 4rem;
+    }
+
+    html.dark-mode section#skills {
+        background-color: var(--gray-dark);
+        color: var(--white);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            background-color 0.3s ease;
+    }
+
+    html.dark-mode .shadow-lg {
+        background-color: var(--gray-light);
+        color: var(--white);
+    }   
+
+    .shadow-lg:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background-color: var(--accent);
+    }
+
+    html.dark-mode .shadow-lg:hover {
+        background-color: var(--accent-light);
+    }
+</style>
