@@ -10,6 +10,13 @@ import { SITE_TITLE } from "../consts";
 				<img src="/TCLogo.png" alt="TC Logo" class="logo" />
 			</a>
 		</h2>
+		<button
+			id="menu-toggle"
+			class="menu-toggle"
+			aria-label="Toggle Navigation"
+		>
+			☰
+		</button>
 		<div class="internal-links">
 			<HeaderLink href="#home" class="nav-link">Home</HeaderLink>
 			<HeaderLink href="#about" class="nav-link">About</HeaderLink>
@@ -39,6 +46,7 @@ import { SITE_TITLE } from "../consts";
 		</div>
 	</nav>
 </header>
+
 <style>
 	header {
 		position: sticky;
@@ -156,11 +164,76 @@ import { SITE_TITLE } from "../consts";
 		border: none;
 		cursor: pointer;
 		font-size: 1.5em;
-		margin-left: 1em;
+	}
+
+	@media (max-width: 720px) {
+		.internal-links {
+			display: none; /* Hide links on smaller screens */
+			flex-direction: column;
+			position: absolute;
+			top: 60px;
+			right: 0;
+			background: var(--white);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			padding: 1em;
+			width: 100%;
+			z-index: 999;
+		}
+
+		.internal-links.active {
+			display: flex; /* Show links when the menu is toggled */
+		}
+
+		.menu-toggle {
+			display: block; /* Show the hamburger menu */
+		}
+	}
+
+	@media (min-width: 721px) {
+		.internal-links {
+			display: flex; /* Show links inline for larger screens */
+			position: static;
+			flex-direction: row;
+			background: none;
+			box-shadow: none;
+			padding: 0;
+		}
+
+		.menu-toggle {
+			display: none; /* Hide the hamburger menu */
+		}
+	}
+
+	@media (max-width: 720px) {
+		.social-links {
+			display: flex; /* Ensure the social links are visible */
+			justify-content: flex-end; /* Align them to the right */
+			position: absolute;
+			top: 10px;
+			right: 1em;
+		}
+
+		.menu-toggle {
+			display: block; /* Ensure the hamburger menu is visible */
+			position: absolute;
+			top: 10px;
+			left: 1em;
+		}
 	}
 </style>
 
 <script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const menuToggle = document.getElementById("menu-toggle");
+		const internalLinks = document.querySelector(".internal-links");
+
+		if (menuToggle && internalLinks) {
+			menuToggle.addEventListener("click", () => {
+				internalLinks.classList.toggle("active");
+			});
+		}
+	});
+
 	document.addEventListener("DOMContentLoaded", () => {
 		const themeToggleButton = document.getElementById("theme-toggle");
 		const htmlElement = document.documentElement;
