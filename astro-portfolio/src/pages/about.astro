@@ -34,6 +34,19 @@
 				or driving around in my 2002 Subaru WRX.
 			</p>
 
+			<p class="mb-6 leading-relaxed">
+				According to the <a
+					href="https://survey.stackoverflow.co/2024/technology"
+					target="_blank"
+					class="hover:underline"
+				>
+					Stack Overflow Developer Survey 2024</a
+				>, I have experience with some of the most popular programming
+				languages, including JavaScript, Java, and C#, which are
+				consistently ranked among the top technologies used by
+				developers worldwide.
+			</p>
+
 			<ul class="list-disc list-inside space-y-4 mb-6">
 				<li>
 					💻 <strong>Tech Stack:</strong><br />
@@ -57,13 +70,14 @@
 					experimenting with vintage-look filters
 				</li> -->
 				<li>
-					🎯 <strong>Interests:</strong> Japan, cars, snowboarding, dirt biking,
-					anime, photography, and learning new technologies
+					🎯 <strong>Interests:</strong> Japan, cars, snowboarding, dirt
+					biking, anime, photography, and learning new technologies
 				</li>
 			</ul>
 
 			<a
 				href="#contact"
+				id="contact"
 				class="inline-block bg-accent-dark dark:bg-accent hover:bg-accent hover:dark:bg-accent-dark text-white dark:text-black font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105"
 			>
 				Let’s Talk
@@ -144,7 +158,7 @@
 	}
 
 	/* Button Styling */
-	a {
+	a#contact {
 		background-color: var(--accent-dark); /* Accent color for button */
 		color: var(--white); /* White text for contrast */
 		padding: 0.75rem 1.5rem; /* Add padding for a larger button */
@@ -154,17 +168,17 @@
 			background-color 0.3s ease; /* Smooth hover effects */
 	}
 
-	a:hover {
+	a#contact:hover {
 		transform: scale(1.05); /* Slight zoom on hover */
 		background-color: var(--accent); /* Change background color on hover */
 	}
 
-	html.dark-mode a {
+	html.dark-mode a#contact {
 		background-color: var(--accent);
 		color: var(--black);
 	}
 
-	html.dark-mode a:hover {
+	html.dark-mode a#contact:hover {
 		background-color: var(--accent-light);
 		color: var(--black);
 	}
