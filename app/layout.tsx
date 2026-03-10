@@ -5,6 +5,7 @@ import AnimatedBackgroundWrapper from "@/components/ui/AnimatedBackgroundWrapper
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </PageTransition>
 
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
