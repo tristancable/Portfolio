@@ -1,8 +1,10 @@
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
+import { getRepoStats } from "@/lib/github";
 import AnimatedSection from "@/components/AnimatedSection";
 import BackButton from "@/components/ui/BackButton";
 import Image from "next/image";
+import ImageModal from "@/components/ui/ImageModal";
 
 export default async function ProjectPage({
     params,
@@ -17,7 +19,20 @@ export default async function ProjectPage({
     const prevProject = projects[(index - 1 + projects.length) % projects.length];
     const nextProject = projects[(index + 1) % projects.length];
 
+
     if (!project) return notFound();
+
+    const repoName = project.github?.split("/").pop();
+    let repoStats = null;
+
+    if (project.github) {
+        const parts = project.github.split("/").filter(Boolean);
+
+        const owner = parts[parts.length - 2];
+        const repo = parts[parts.length - 1];
+
+        repoStats = await getRepoStats(owner, repo);
+    }
 
     return (
         <div className="relative min-h-screen bg-black text-white">
@@ -39,6 +54,14 @@ export default async function ProjectPage({
                     </h1>
 
                     <p className="text-xl text-gray-400 mb-8">{project.description}</p>
+
+                    {repoStats && (
+                        <div className="flex gap-6 text-sm text-gray-400 mb-8">
+                            <span>⭐ {repoStats.stars}</span>
+                            <span>🍴 {repoStats.forks}</span>
+                            <span>{repoStats.language}</span>
+                        </div>
+                    )}
 
                     {/* Tech stack badges */}
                     <div className="flex flex-wrap gap-3 mb-16">
@@ -63,15 +86,7 @@ export default async function ProjectPage({
                                         key={index}
                                         className="relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 aspect-video"
                                     >
-                                        <Image
-                                            src={src}
-                                            alt={`Screenshot ${index + 1}`}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
-                                            priority={index === 0}
-                                            loading="eager"
-                                            className="object-cover hover:scale-105 transition duration-500"
-                                        />
+                                        <ImageModal src={src} />
                                     </div>
                                 ))}
                             </div>

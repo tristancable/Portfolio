@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import ScrollLink from "@/components/ui/ScrollLink";
 
@@ -56,6 +55,7 @@ export default function Navbar() {
                 </ScrollLink>
 
                 <div className="flex gap-6 text-sm">
+                    
                     <ScrollLink targetId="home" className={linkClass("home")}>
                         Home
                     </ScrollLink>

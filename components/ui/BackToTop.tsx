@@ -38,7 +38,7 @@ export default function BackToTop() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: visible ? 1 : 0, scale: visible ? 1 : 0.8 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-8 right-8 z-50"
+            className="fixed bottom-12 right-8 z-50"
         >
             <button
                 onClick={scrollToTop}

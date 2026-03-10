@@ -13,7 +13,7 @@ export const projects: Project[] = [
             "PostgreSQL",
             "TailwindCSS",
         ],
-        github: "https://github.com/yourusername/skincare-quiz",
+        github: "https://github.com/nexusrex/skincare-ai",
         live: "https://your-live-url.com",
         problem:
             "Users struggle to find skincare products tailored to their unique skin type and concerns.",

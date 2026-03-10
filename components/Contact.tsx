@@ -2,6 +2,7 @@
 
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
+import GithubCalendar from "@/components/ui/GithubCalendar";
 import { motion } from "framer-motion";
 
 export default function Contact() {
@@ -60,6 +61,16 @@ export default function Contact() {
                             {link.label}
                         </a>
                     ))}
+                </motion.div>
+
+                <motion.div
+                    className="mt-12"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                >
+                    <h3 className="text-xl font-semibold mb-4">GitHub Activity</h3>
+                    <GithubCalendar />
                 </motion.div>
             </Container>
         </Section>
