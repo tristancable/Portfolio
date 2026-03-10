@@ -59,7 +59,6 @@ export default async function ProjectPage({
                         <div className="flex gap-6 text-sm text-gray-400 mb-8">
                             <span>⭐ {repoStats.stars}</span>
                             <span>🍴 {repoStats.forks}</span>
-                            <span>{repoStats.language}</span>
                         </div>
                     )}
 
