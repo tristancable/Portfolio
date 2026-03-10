@@ -16,6 +16,5 @@ export async function getRepoStats(owner: string, repo: string) {
     return {
         stars: data.stargazers_count,
         forks: data.forks_count,
-        // language: data.language,
     };
 }
