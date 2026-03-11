@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import ScrollLink from "@/components/ui/ScrollLink";
+import { FaReact } from "react-icons/fa";
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiVercel } from "react-icons/si";
 
 export default function Hero() {
     const { scrollY } = useScroll();
@@ -12,6 +14,15 @@ export default function Hero() {
 
     const [typedText, setTypedText] = useState("");
     const fullText = "Web Developer · Software Engineer · Full-Stack Developer";
+
+    const techStack = [
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "React", icon: FaReact },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "Tailwind", icon: SiTailwindcss },
+        { name: "Framer Motion", icon: SiFramer },
+        { name: "Vercel", icon: SiVercel },
+    ]
 
     useEffect(() => {
         let i = 0;
@@ -67,17 +78,24 @@ export default function Hero() {
                         Crafting clean, modern web experiences with responsive design and smooth interactions.
                     </p>
 
-                    <div className="flex flex-wrap justify-center gap-3 mb-12">
-                        {["React", "TypeScript", "Next.js", "Node.js", "PostgreSQL"].map((tech) => (
-                            <motion.span
-                                key={tech}
-                                whileHover={{ y: -4, scale: 1.05 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                                className="px-4 py-2 text-sm bg-zinc-900/70 border border-cyan-400 rounded-full backdrop-blur-md"
-                            >
-                                {tech}
-                            </motion.span>
-                        ))}
+                    <div className="mb-12">
+                        <p className="text-sm text-gray-500 mb-4 tracking-wide uppercase">
+                            Built with
+                        </p>
+
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {techStack.map(({ name, icon: Icon }) => (
+                                <motion.span
+                                    key={name}
+                                    whileHover={{ y: -4, scale: 1.05 }}
+                                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                                    className="flex items-center gap-2 px-4 py-2 text-sm bg-zinc-900/70 border border-zinc-800 rounded-full backdrop-blur-md hover:border-cyan-400 transition-colors"
+                                >
+                                    <Icon className="text-lg text-cyan-400" />
+                                    {name}
+                                </motion.span>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-4">

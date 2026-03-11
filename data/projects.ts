@@ -26,7 +26,7 @@ export const projects: Project[] = [
             "Managing server/client data boundaries in Next.js App Router",
         ],
         screenshots: [
-            "/projects/ai-skincare-quiz/Kana.png",
+            
         ]
     },
     {
