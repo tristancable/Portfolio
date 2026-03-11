@@ -39,7 +39,7 @@ export default async function ProjectPage({
             {/* Subtle background glow */}
             <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-transparent to-purple-500/10 pointer-events-none" />
 
-            <div className="relative container py-24 max-w-4xl mx-auto">
+            <div className="relative py-24 max-w-4xl mx-auto px-6 sm:px-8 lg:px-0">
                 {/* Back Button */}
                 <AnimatedSection>
                     <div className="mb-12">
@@ -49,7 +49,7 @@ export default async function ProjectPage({
 
                 {/* HERO */}
                 <AnimatedSection>
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
                         {project.title}
                     </h1>
 
@@ -79,7 +79,7 @@ export default async function ProjectPage({
                     <AnimatedSection>
                         <div className="mb-16">
                             <h2 className="text-2xl font-semibold mb-8">Product Preview</h2>
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {project.screenshots.map((src, index) => (
                                     <div
                                         key={index}

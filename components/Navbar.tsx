@@ -50,12 +50,12 @@ export default function Navbar() {
             className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-zinc-800"
         >
             <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                <ScrollLink targetId="home" className="font-semibold text-lg hover:opacity-80 transition">
+                <ScrollLink targetId="home" className="font-bold text-lg tracking-wide hover:opacity-80 transition">
                     Tristan Cable
                 </ScrollLink>
 
                 <div className="flex gap-6 text-sm">
-                    
+
                     <ScrollLink targetId="home" className={linkClass("home")}>
                         Home
                     </ScrollLink>
