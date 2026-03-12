@@ -69,7 +69,6 @@ export default function Contact() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
                 >
-                    <h3 className="text-xl font-semibold mb-4">GitHub Activity</h3>
                     <GithubCalendar />
                 </motion.div>
             </Container>
