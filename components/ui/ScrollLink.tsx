@@ -7,10 +7,12 @@ export default function ScrollLink({
     targetId,
     children,
     className,
+    onNavigate,
 }: {
     targetId: string;
     children: ReactNode;
     className?: string;
+    onNavigate?: () => void;
 }) {
     const pathname = usePathname();
     const router = useRouter();
@@ -33,6 +35,8 @@ export default function ScrollLink({
                 el?.scrollIntoView({ behavior: "smooth" });
             }
         }
+
+        onNavigate?.();
     };
 
     return (
