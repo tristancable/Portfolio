@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   title: "Tristan Cable | Software Engineer",
   description:
     "Full-Stack Software Engineer building scalable web applications with React and TypeScript.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+  },
 };
 
 export default function RootLayout({
