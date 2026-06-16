@@ -7,108 +7,150 @@ import { projects } from "@/data/projects";
 import { useState } from "react";
 import { techIcons } from "@/lib/tech-icons";
 import ProjectCard from "@/components/ui/ProjectCard";
-
-const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.1 } },
-};
+import { FaFilter, FaChevronDown, FaTimes } from "react-icons/fa";
 
 export default function Projects() {
-    const [filters, setFilters] = useState<string[]>([]);
-    const [matchAll, setMatchAll] = useState(true);
+  const [filters, setFilters] = useState<string[]>([]);
+  const [matchAll, setMatchAll] = useState(false);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
-    const techStacks = Array.from(new Set(projects.flatMap((p) => p.tech))).sort();
+  const techStacks = Array.from(
+    new Set(projects.flatMap((p) => p.tech)),
+  ).sort();
 
-    const toggleFilter = (tech: string) =>
-        setFilters((prev) =>
-            prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech]
-        );
+  const toggleFilter = (tech: string) =>
+    setFilters((prev) =>
+      prev.includes(tech) ? prev.filter((t) => t !== tech) : [...prev, tech],
+    );
 
-    const resetFilters = () => setFilters([]);
+  const resetFilters = () => {
+    setFilters([]);
+    setIsFiltersOpen(false);
+  };
 
-    const filteredProjects = filters.length
-        ? projects.filter((project) =>
-            matchAll
-                ? filters.every((filter) => project.tech.includes(filter)) // AND
-                : filters.some((filter) => project.tech.includes(filter))   // OR
-        )
-        : projects;
+  const filteredProjects = filters.length
+    ? projects.filter((project) =>
+        matchAll
+          ? filters.every((filter) => project.tech.includes(filter))
+          : filters.some((filter) => project.tech.includes(filter)),
+      )
+    : projects;
 
-    const [spotlight, setSpotlight] = useState<Record<string, { x: number; y: number }>>({});
+  return (
+    <Section id="projects">
+      <Container>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+            Featured Projects
+          </h2>
+          <div className="h-1 w-20 bg-cyan-400 mx-auto mt-6 rounded-full" />
+        </div>
 
-    return (
-        <Section id="projects">
-            <Container>
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold">
-                        Projects
-                    </h2>
-                    <hr className="w-16 border-t-2 border-cyan-400 mx-auto mt-4" />
-                </div>
+        {/* Filter Section */}
+        <div className="sticky top-24 z-30 mb-12">
+          <div className="bg-zinc-900/90 backdrop-blur-xl border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between px-6 py-4">
+              <button
+                onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+                className="flex items-center gap-3 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
+              >
+                <FaFilter
+                  className={filters.length > 0 ? "text-cyan-400" : ""}
+                />
+                Filter by Technology
+                {filters.length > 0 && (
+                  <span className="bg-cyan-500 text-black text-[10px] px-2 py-0.5 rounded-full font-black">
+                    {filters.length}
+                  </span>
+                )}
+                <FaChevronDown
+                  className={`transition-transform duration-300 ${
+                    isFiltersOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
 
-                {/* Filter Controls */}
-                <div className="flex flex-wrap gap-3 mb-6 justify-center">
-                    <button
-                        onClick={resetFilters}
-                        className="px-4 py-2 rounded-full border border-zinc-800 font-medium text-sm text-gray-300 hover:bg-cyan-400/20 hover:text-white transition"
-                    >
-                        Reset All Filters
-                    </button>
+              {filters.length > 0 && (
+                <button
+                  onClick={resetFilters}
+                  className="text-xs font-bold text-zinc-500 hover:text-red-400 flex items-center gap-2 transition-colors"
+                >
+                  <FaTimes /> RESET
+                </button>
+              )}
+            </div>
 
-                    <button
+            <AnimatePresence>
+              {isFiltersOpen && (
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={{ height: "auto" }}
+                  exit={{ height: 0 }}
+                  className="border-t border-zinc-800 bg-zinc-900/50"
+                >
+                  <div className="p-6 pt-2">
+                    <div className="flex items-center gap-4 mb-6">
+                      <button
                         onClick={() => setMatchAll(!matchAll)}
-                        className={`px-4 py-2 rounded-full border font-medium text-sm transition
-            ${matchAll
-                                ? "bg-cyan-400/20 border-cyan-400 text-white hover:bg-cyan-400/30"
-                                : "bg-zinc-900/40 border-zinc-700 text-gray-300 hover:bg-cyan-400/10 hover:text-white"
-                            }`}
-                    >
-                        Match {matchAll ? "All" : "Any"}
-                    </button>
-                </div>
+                        className={`px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest border transition-all ${
+                          matchAll
+                            ? "bg-cyan-400 border-cyan-400 text-black"
+                            : "border-zinc-700 text-zinc-500 hover:border-zinc-500"
+                        }`}
+                      >
+                        Match {matchAll ? "All Selected" : "Any Selected"}
+                      </button>
+                      <p className="text-[11px] text-zinc-500 font-medium">
+                        Showing {filteredProjects.length} projects
+                      </p>
+                    </div>
 
-                {/* Tech Filter Buttons */}
-                <div className="flex flex-wrap gap-3 mb-12 justify-center">
-                    {techStacks.map((tech) => {
+                    <div className="flex flex-wrap gap-2">
+                      {techStacks.map((tech) => {
                         const Icon = techIcons[tech];
                         const isSelected = filters.includes(tech);
-
                         return (
-                            <button
-                                key={tech}
-                                onClick={() => toggleFilter(tech)}
-                                className={`flex items-center gap-1 px-3 py-1 text-xs rounded-full bg-zinc-800 border text-gray-300 hover:border-cyan-400 transition
-      ${isSelected
-                                        ? "bg-cyan-400/20 border-cyan-400 text-white hover:bg-cyan-400/30"
-                                        : "bg-zinc-900/40 border-zinc-700 text-gray-300 hover:bg-cyan-400/10 hover:text-white"
-                                    }`}
-                            >
-                                {Icon && <Icon className="text-sm text-cyan-400" />}
-                                {tech}
-                            </button>
+                          <button
+                            key={tech}
+                            onClick={() => toggleFilter(tech)}
+                            className={`flex items-center gap-2 px-4 py-2 text-xs rounded-xl border transition-all ${
+                              isSelected
+                                ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.1)]"
+                                : "bg-zinc-800/40 border-zinc-800 text-zinc-400 hover:border-zinc-600"
+                            }`}
+                          >
+                            {Icon && <Icon size={14} />}
+                            {tech}
+                          </button>
                         );
-                    })}
-                </div>
-
-                {/* Project Grid */}
-                <motion.div
-                    className="grid md:grid-cols-2 gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <AnimatePresence>
-                        {filteredProjects.map((project) => (
-                            <ProjectCard
-                                key={project.slug}
-                                project={project}
-                                spotlight={spotlight}
-                                setSpotlight={setSpotlight}
-                            />
-                        ))}
-                    </AnimatePresence>
+                      })}
+                    </div>
+                  </div>
                 </motion.div>
-            </Container >
-        </Section >
-    );
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.slug}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                // Important: ensure this wrapper also allows the child to be h-full
+                className="h-full"
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </Container>
+    </Section>
+  );
 }
