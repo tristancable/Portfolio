@@ -11,6 +11,7 @@ import VisitorCounter from "@/components/ui/VisitorCounter";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +20,11 @@ export const metadata: Metadata = {
     "Full-Stack Software Engineer building scalable web applications with React and TypeScript.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={inter.variable}>
       <body className="text-white antialiased">

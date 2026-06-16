@@ -49,10 +49,11 @@ export default function Projects() {
         {/* Filter Section */}
         <div className="sticky top-24 z-30 mb-12">
           <div className="bg-zinc-900/90 backdrop-blur-xl border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-6 py-4">
+            <div className="flex items-center px-6 py-4 gap-4">
               <button
+                type="button"
                 onClick={() => setIsFiltersOpen(!isFiltersOpen)}
-                className="flex items-center gap-3 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
+                className="flex flex-1 items-center gap-3 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors cursor-pointer text-left min-h-[2rem]"
               >
                 <FaFilter
                   className={filters.length > 0 ? "text-cyan-400" : ""}
@@ -64,7 +65,7 @@ export default function Projects() {
                   </span>
                 )}
                 <FaChevronDown
-                  className={`transition-transform duration-300 ${
+                  className={`ml-auto transition-transform duration-300 ${
                     isFiltersOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -72,8 +73,12 @@ export default function Projects() {
 
               {filters.length > 0 && (
                 <button
-                  onClick={resetFilters}
-                  className="text-xs font-bold text-zinc-500 hover:text-red-400 flex items-center gap-2 transition-colors"
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    resetFilters();
+                  }}
+                  className="shrink-0 text-xs font-bold text-zinc-500 hover:text-red-400 flex items-center gap-2 transition-colors cursor-pointer"
                 >
                   <FaTimes /> RESET
                 </button>
@@ -91,8 +96,9 @@ export default function Projects() {
                   <div className="p-6 pt-2">
                     <div className="flex items-center gap-4 mb-6">
                       <button
+                        type="button"
                         onClick={() => setMatchAll(!matchAll)}
-                        className={`px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest border transition-all ${
+                        className={`cursor-pointer px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest border transition-all ${
                           matchAll
                             ? "bg-cyan-400 border-cyan-400 text-black"
                             : "border-zinc-700 text-zinc-500 hover:border-zinc-500"
@@ -111,9 +117,10 @@ export default function Projects() {
                         const isSelected = filters.includes(tech);
                         return (
                           <button
+                            type="button"
                             key={tech}
                             onClick={() => toggleFilter(tech)}
-                            className={`flex items-center gap-2 px-4 py-2 text-xs rounded-xl border transition-all ${
+                            className={`cursor-pointer flex items-center gap-2 px-4 py-2 text-xs rounded-xl border transition-all ${
                               isSelected
                                 ? "bg-cyan-500/20 border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.1)]"
                                 : "bg-zinc-800/40 border-zinc-800 text-zinc-400 hover:border-zinc-600"
@@ -138,11 +145,9 @@ export default function Projects() {
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.slug}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                // Important: ensure this wrapper also allows the child to be h-full
+                layout
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
                 className="h-full"
               >
                 <ProjectCard project={project} />

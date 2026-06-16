@@ -47,9 +47,6 @@ const ProjectCard = memo(({ project }: ProjectCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
       whileHover={{ y: -4, scale: 1.01 }}
       onMouseEnter={startCarousel}
       onMouseLeave={stopCarousel}
@@ -136,12 +133,9 @@ const ProjectCard = memo(({ project }: ProjectCardProps) => {
           >
             View Project
           </Link>
-          <motion.span
-            animate={{ x: [0, 4, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          >
+          <span className="inline-block transition-transform group-hover:translate-x-1">
             →
-          </motion.span>
+          </span>
         </div>
       </div>
     </motion.div>
