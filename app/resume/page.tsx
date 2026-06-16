@@ -29,7 +29,7 @@ export default function ResumePage() {
           transition={{ delay: 0.3 }}
         >
           <iframe
-            src="/resume.pdf"
+            src="/Resume.pdf"
             className="w-full h-[80vh]"
             title="Resume Preview"
           />
@@ -42,7 +42,7 @@ export default function ResumePage() {
           transition={{ delay: 0.5 }}
         >
           <a
-            href="/resume.pdf"
+            href="/Resume.pdf"
             download="Tristan-Cable-Resume.pdf"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-purple-400 text-white font-medium hover:bg-purple-400/20 transition shadow-lg"
           >
