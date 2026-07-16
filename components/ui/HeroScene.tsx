@@ -69,7 +69,10 @@ function Sculpture({
         <meshStandardMaterial color={BONE} metalness={0.35} roughness={0.45} />
       </mesh>
 
-      <mesh rotation={[Math.PI / 4, Math.PI / 5, 0]} position={[0.15, 0.2, 0.1]}>
+      <mesh
+        rotation={[Math.PI / 4, Math.PI / 5, 0]}
+        position={[0.15, 0.2, 0.1]}
+      >
         <boxGeometry args={[0.55, 1.9, 0.55]} />
         <meshStandardMaterial color={ACCENT} metalness={0.2} roughness={0.4} />
       </mesh>
@@ -116,7 +119,11 @@ function SceneContent({
       <color attach="background" args={[INK]} />
       <ambientLight intensity={0.45} />
       <directionalLight position={[4, 6, 3]} intensity={1.2} color={BONE} />
-      <directionalLight position={[-3, -2, 4]} intensity={0.55} color={ACCENT} />
+      <directionalLight
+        position={[-3, -2, 4]}
+        intensity={0.55}
+        color={ACCENT}
+      />
       <Sculpture reducedMotion={reducedMotion} pointer={pointer} />
     </>
   );
@@ -177,10 +184,17 @@ export default function HeroScene({ className }: { className?: string }) {
         dpr={[1, isMobile ? 1.25 : 1.5]}
         camera={{ position: [0, 0.2, 4.2], fov: 42 }}
         frameloop={visible && !reducedMotion ? "always" : "demand"}
-        gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
+        gl={{
+          antialias: true,
+          alpha: false,
+          powerPreference: "high-performance",
+        }}
         style={{ width: "100%", height: "100%" }}
       >
-        <SceneContent reducedMotion={reducedMotion || isMobile} pointer={pointer} />
+        <SceneContent
+          reducedMotion={reducedMotion || isMobile}
+          pointer={pointer}
+        />
       </Canvas>
     </div>
   );

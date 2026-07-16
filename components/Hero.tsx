@@ -8,9 +8,7 @@ import ScrollLink from "@/components/ui/ScrollLink";
 
 const HeroScene = dynamic(() => import("@/components/ui/HeroScene"), {
   ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-ink" aria-hidden />
-  ),
+  loading: () => <div className="absolute inset-0 bg-ink" aria-hidden />,
 });
 
 export default function Hero() {
@@ -53,7 +51,11 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.6,
+              delay: 0.18,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="text-bone/80 text-base md:text-lg mb-10 leading-relaxed"
           >
             Building full-stack products with sharp interfaces, solid systems,
@@ -63,7 +65,11 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.6,
+              delay: 0.26,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="flex flex-wrap gap-4"
           >
             <ScrollLink
