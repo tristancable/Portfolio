@@ -1,16 +1,22 @@
 import "./globals.css";
 import PageTransition from "@/components/ui/PageTransition";
 import BackToTop from "@/components/ui/BackToTop";
-import AnimatedBackgroundWrapper from "@/components/ui/AnimatedBackgroundWrapper";
-import { Inter } from "next/font/google";
+import { Syne, IBM_Plex_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import VisitorCounter from "@/components/ui/VisitorCounter";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const plex = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plex",
   display: "swap",
 });
 
@@ -33,13 +39,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="text-white antialiased">
+    <html lang="en" className={`${syne.variable} ${plex.variable}`}>
+      <body className="bg-ink text-bone antialiased font-sans">
         <PageTransition>
-          <AnimatedBackgroundWrapper />
           {children}
           <BackToTop />
-          <VisitorCounter className="fixed bottom-3 right-4 text-gray-400 bg-zinc-900/50 px-3 py-1 rounded-lg text-sm" />
+          <VisitorCounter className="fixed bottom-3 right-4 text-muted bg-surface border border-edge px-3 py-1 rounded-sm text-sm" />
         </PageTransition>
 
         <Analytics />

@@ -9,7 +9,7 @@ export default function ScrollProgress() {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.body.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setScrollProgress(progress);
     };
 
@@ -18,9 +18,9 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-2 z-50 pointer-events-none">
+    <div className="fixed top-0 left-0 w-full h-0.5 z-50 pointer-events-none">
       <div
-        className="h-2 bg-linear-to-r from-cyan-400 via-teal-400 to-blue-400 shadow-lg transition-all duration-150 ease-out"
+        className="h-full bg-accent transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
     </div>

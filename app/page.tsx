@@ -8,7 +8,7 @@ import ScrollHandler from "@/components/ui/ScrollHandler";
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-white">
+    <main className="min-h-screen bg-ink text-bone">
       <Suspense fallback={null}>
         <ScrollHandler />
       </Suspense>

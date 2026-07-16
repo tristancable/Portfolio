@@ -3,6 +3,7 @@
 import ScrollLink from "@/components/ui/ScrollLink";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const navLinks = [
   { id: "home", label: "Home" },
@@ -52,42 +53,50 @@ export default function Navbar() {
   }, [menuOpen]);
 
   const linkClass = (section: string) =>
-    `hover:text-white transition ${
-      activeSection === section ? "text-white font-semibold" : "text-gray-300"
+    `relative transition ${
+      activeSection === section
+        ? "text-bone font-semibold after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-accent"
+        : "text-muted hover:text-bone"
     }`;
 
   const mobileLinkClass = (section: string) =>
-    `block w-full text-left px-4 py-3 rounded-xl text-base transition ${
+    `block w-full text-left px-4 py-3 rounded-sm text-base transition border ${
       activeSection === section
-        ? "bg-cyan-500/15 text-cyan-400 font-semibold border border-cyan-500/30"
-        : "text-gray-300 hover:bg-zinc-800/60 hover:text-white"
+        ? "border-accent text-accent bg-accent/10 font-semibold"
+        : "border-transparent text-muted hover:bg-surface hover:text-bone"
     }`;
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/40 border-b border-zinc-800">
+    <nav className="fixed top-0 w-full z-50 bg-ink border-b border-edge">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <ScrollLink
           targetId="home"
           onNavigate={closeMenu}
-          className="font-bold text-lg tracking-wide hover:opacity-80 transition"
+          className="font-display font-bold text-lg tracking-tight text-bone hover:text-accent transition"
         >
           Tristan Cable
         </ScrollLink>
 
-        <div className="hidden md:flex gap-6 text-sm">
+        <div className="hidden md:flex items-center gap-8 text-sm">
           {navLinks.map(({ id, label }) => (
             <ScrollLink key={id} targetId={id} className={linkClass(id)}>
               {label}
             </ScrollLink>
           ))}
+          <Link
+            href="/resume"
+            className="text-muted hover:text-bone transition"
+          >
+            Resume
+          </Link>
         </div>
 
         <button
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
-          className="md:hidden p-2 -mr-2 rounded-lg text-gray-300 hover:text-white hover:bg-zinc-800/60 transition cursor-pointer"
+          className="md:hidden p-2 -mr-2 rounded-sm text-muted hover:text-bone hover:bg-surface transition cursor-pointer"
           aria-expanded={menuOpen}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
@@ -96,7 +105,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-xl px-4 py-4">
+        <div className="md:hidden border-t border-edge bg-ink px-4 py-4">
           <div className="flex flex-col gap-1">
             {navLinks.map(({ id, label }) => (
               <ScrollLink
@@ -108,6 +117,13 @@ export default function Navbar() {
                 {label}
               </ScrollLink>
             ))}
+            <Link
+              href="/resume"
+              onClick={closeMenu}
+              className="block w-full text-left px-4 py-3 rounded-sm text-base text-muted hover:bg-surface hover:text-bone border border-transparent"
+            >
+              Resume
+            </Link>
           </div>
         </div>
       )}

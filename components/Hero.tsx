@@ -1,23 +1,17 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import ScrollLink from "@/components/ui/ScrollLink";
-import { FaReact } from "react-icons/fa";
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer, SiVercel } from "react-icons/si";
 
-const subtitle =
-  "Web Developer · Software Engineer · Full-Stack Developer";
-
-const techStack = [
-  { name: "Next.js", icon: SiNextdotjs },
-  { name: "React", icon: FaReact },
-  { name: "TypeScript", icon: SiTypescript },
-  { name: "Tailwind", icon: SiTailwindcss },
-  { name: "Framer Motion", icon: SiFramer },
-  { name: "Vercel", icon: SiVercel },
-];
+const HeroScene = dynamic(() => import("@/components/ui/HeroScene"), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 bg-ink" aria-hidden />
+  ),
+});
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -26,70 +20,73 @@ export default function Hero() {
   return (
     <Section
       id="home"
-      className="relative flex items-center min-h-screen overflow-x-hidden overflow-y-visible"
+      className="relative flex items-center min-h-screen overflow-hidden"
     >
-      <Container className="text-center relative z-10">
-        <div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-            <span className="bg-gradient-to-r from-cyan-300 via-white to-blue-400 bg-clip-text text-transparent">
-              Tristan Cable
-            </span>
-          </h1>
-          <h2 className="text-xl md:text-2xl text-gray-400 mb-4 min-h-[4.5rem] md:min-h-8 flex items-center justify-center px-4">
-            {subtitle}
-          </h2>
-          <p className="text-gray-400 text-md md:text-lg mb-10">
-            Crafting clean, modern web experiences with responsive design and
-            smooth interactions.
-          </p>
+      <HeroScene className="absolute inset-0 z-0 opacity-40 md:opacity-100 md:left-[42%] md:right-0 md:inset-y-0" />
 
-          <div className="mb-12">
-            <p className="text-sm text-gray-500 mb-4 tracking-wide uppercase">
-              Built with
-            </p>
+      <div
+        className="absolute inset-0 z-[1] bg-gradient-to-r from-ink via-ink/90 to-ink/40 md:to-transparent pointer-events-none"
+        aria-hidden
+      />
 
-            <div className="flex flex-wrap justify-center gap-3">
-              {techStack.map(({ name, icon: Icon }) => (
-                <span
-                  key={name}
-                  className="flex items-center gap-2 px-4 py-2 text-sm bg-zinc-900/70 border border-zinc-800 rounded-full backdrop-blur-md hover:border-cyan-400 transition-colors"
-                >
-                  <Icon className="text-lg text-cyan-400" />
-                  {name}
-                </span>
-              ))}
-            </div>
-          </div>
+      <Container className="relative z-10">
+        <div className="max-w-xl pt-20 md:pt-0">
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-bone mb-5"
+          >
+            Tristan Cable
+            <span className="mt-3 block h-1 w-16 bg-accent" aria-hidden />
+          </motion.h1>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-lg md:text-xl text-muted mb-4"
+          >
+            Software engineer
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+            className="text-bone/80 text-base md:text-lg mb-10 leading-relaxed"
+          >
+            Building full-stack products with sharp interfaces, solid systems,
+            and motion that earns its place.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-wrap gap-4"
+          >
             <ScrollLink
               targetId="projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-medium hover:opacity-90 transition shadow-lg"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-bone text-ink font-medium hover:opacity-90 transition"
             >
-              View My Work
-              <span className="inline-block">→</span>
+              View work
+              <span aria-hidden>→</span>
             </ScrollLink>
 
             <ScrollLink
               targetId="contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-cyan-400 text-white font-medium hover:bg-cyan-400/20 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-sm border border-accent text-accent font-medium hover:bg-accent/10 transition"
             >
-              Contact Me
+              Contact
             </ScrollLink>
-
-            <a
-              href="/resume"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-purple-400 text-white font-medium hover:bg-purple-400/20 transition"
-            >
-              Resume
-            </a>
-          </div>
+          </motion.div>
         </div>
       </Container>
 
       <motion.div
         style={{ opacity: scrollFade }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gray-500 text-sm hidden md:block"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted text-sm hidden md:block z-10"
       >
         ↓ Scroll
       </motion.div>
