@@ -2,6 +2,114 @@ import { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
+    slug: "waypoint",
+    title: "Waypoint",
+    description:
+      "A VS Code extension that finds and jumps to TODO comments scattered across your project, all in one sidebar panel.",
+    tech: ["TypeScript", "VS Code Extension API", "JavaScript", "esbuild"],
+    github: "https://github.com/tristancable/Waypoint",
+    live: "",
+    problem:
+      "TODO, FIXME, HACK, and NOTE comments get scattered across a codebase, making it hard to track open work without manually searching every file.",
+    solution:
+      "Built a VS Code sidebar extension that scans the workspace for configurable comment tags, groups them by file, supports click-to-jump navigation, live refresh on save, mark-as-done, custom tag colors, and a status bar open-todo count.",
+    challenges: [
+      "Scanning common file types efficiently across a full workspace",
+      "Keeping the todo list in sync with live file saves",
+      "Supporting custom tags and colors via the waypoint.tags setting",
+      "Handling mark-as-done without deleting the underlying comment",
+      "Packaging and distributing the extension as a .vsix before Marketplace publishing",
+    ],
+    screenshots: [
+      "/projects/waypoint/Waypoint.png",
+      "/projects/waypoint/Waypoint Settings.png",
+    ],
+  },
+  {
+    slug: "car-patterns-final",
+    title: "Car Patterns Final",
+    description:
+      "A simple C# console application showcasing three design patterns—one from each category—using a car-related example.",
+    tech: ["C#", ".NET"],
+    github: "https://github.com/tristancable/Car-Patterns-Final",
+    live: "",
+    problem:
+      "Design patterns are easier to understand when each creational, structural, and behavioral example lives in one cohesive domain instead of isolated snippets.",
+    solution:
+      "Built a console app that wires Factory Method (Creators) to build different Car types, Observer (Behaviors) to notify listeners on speed changes, and Adapter (Structurals) to wrap a legacy Telemetry API, with shared Core models and interfaces.",
+    challenges: [
+      "Organizing the project into Console, Core, Creators, Behaviors, and Structurals layers",
+      "Implementing Factory Method for different Car types via ICarFactory",
+      "Using Observer to notify listeners on speed changes",
+      "Adapting a legacy Telemetry API into the current model",
+    ],
+    screenshots: [],
+  },
+  {
+    slug: "automarket-watch",
+    title: "AutoMarket Watch",
+    description:
+      "A full-stack automotive market tracking platform for enthusiasts to track vehicle valuations, curate watchlists, and connect with collectors.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Mongoose",
+      "JWT",
+    ],
+    github: "https://github.com/tristancable/AutoMarketWatch",
+    live: "",
+    problem:
+      "Car enthusiasts need a single place to track real-time vehicle valuations, maintain a personal watchlist, and discover what other collectors are following.",
+    solution:
+      "Built a MERN-style app with a live NHTSA market feed, JWT auth, per-user MongoDB watchlists, CarQuery trim details, public profiles, a community page, and likes — evolved across five development phases from React UI to a full authenticated API.",
+    challenges: [
+      "Integrating NHTSA vPIC, CarQuery, and IMAGIN.studio APIs into a cohesive market feed",
+      "Implementing JWT authentication with persistent sessions via AuthContext",
+      "Scoping watchlist CRUD and likes per user with a DAL over MongoDB Atlas",
+      "Building public profiles and a community page on top of private watchlist data",
+      "Proxying trim-level data through the Express backend for secure API access",
+    ],
+    screenshots: [
+      "/projects/automarket-watch/home.png",
+      "/projects/automarket-watch/market.png",
+      "/projects/automarket-watch/market add to watchlist.png",
+      "/projects/automarket-watch/watchlist.png",
+    ],
+  },
+  {
+    slug: "distributed-systems",
+    title: "Retro Video Game Exchange",
+    description:
+      "A Kubernetes-orchestrated microservices project from my distributed systems course, load-tested with k6 and autoscaled via HPA.",
+    tech: [
+      "Kubernetes",
+      "Docker",
+      "Kafka",
+      "Nginx",
+      "Prometheus",
+      "k6",
+      "JavaScript",
+    ],
+    github: "",
+    live: "",
+    problem:
+      "A multi-service exchange needs to stay responsive under sudden traffic spikes without manually resizing pods or losing message flow between services.",
+    solution:
+      "Deployed the Retro Video Game Exchange on Kubernetes with Kafka messaging, Nginx, and Prometheus, then ran a k6 load test (100 VUs) while watching the Horizontal Pod Autoscaler scale the API from 1 to 10 replicas under CPU pressure and back down after the spike.",
+    challenges: [
+      "Configuring Kubernetes deployments, resources, and HPA targets so autoscaling could react to CPU load",
+      "Wiring Kafka bootstrap servers and supporting services (Kafdrop, Prometheus exporters) into the cluster",
+      "Writing and running k6 load tests that drove ~39k iterations against the live API",
+      "Observing and validating scale-up/scale-down behavior under watch with kubectl",
+    ],
+    screenshots: ["/projects/distributed-systems/Kubernetes Load Test.png"],
+  },
+  {
     slug: "lumiere",
     title: "Lumiere",
     description:
@@ -19,7 +127,16 @@ export const projects: Project[] = [
       "Creating dynamic recommendation logic",
       "Managing server/client data boundaries in Next.js App Router",
     ],
-    screenshots: [],
+    screenshots: [
+      "/projects/lumiere/home-1.png",
+      "/projects/lumiere/home-2.png",
+      "/projects/lumiere/home-3.png",
+      "/projects/lumiere/shop.png",
+      "/projects/lumiere/ai chat.png",
+      "/projects/lumiere/cart.png",
+      "/projects/lumiere/sign in.png",
+      "/projects/lumiere/sign up.png",
+    ],
   },
   {
     slug: "carspec",
@@ -38,10 +155,21 @@ export const projects: Project[] = [
       "Managing cross-platform state in a Blazor Hybrid environment",
       "Designing a dashboard that remains readable in a garage setting",
     ],
-    screenshots: [],
+    screenshots: [
+      "/projects/carspec/home.png",
+      "/projects/carspec/replay-1.png",
+      "/projects/carspec/replay-2.png",
+      "/projects/carspec/codes.png",
+      "/projects/carspec/garage-1.png",
+      "/projects/carspec/garage-2.png",
+      "/projects/carspec/garage-3.png",
+      "/projects/carspec/maintenance-1.png",
+      "/projects/carspec/maintenance-2.png",
+      "/projects/carspec/bluetooth.png",
+    ],
   },
   {
-    slug: "notes-plus-plus",
+    slug: "notesplusplus",
     title: "NotesPlusPlus",
     description:
       "A cross-platform, user-friendly note-taking application designed for seamless desktop and mobile use.",
@@ -57,7 +185,7 @@ export const projects: Project[] = [
       "Optimizing the UI for both touch and mouse input",
       "Ensuring 100% feature parity across different OS environments",
     ],
-    screenshots: [],
+    screenshots: ["/projects/notesplusplus/home.png"],
   },
   {
     slug: "shanes-story",
@@ -76,7 +204,12 @@ export const projects: Project[] = [
       "Creating an engaging narrative flow through web design",
       "Implementing responsive layouts for mobile users",
     ],
-    screenshots: [],
+    screenshots: [
+      "/projects/shanes-story/home.png",
+      "/projects/shanes-story/about.png",
+      "/projects/shanes-story/gallery.png",
+      "/projects/shanes-story/contact.png",
+    ],
   },
   {
     slug: "drivesync",
@@ -95,7 +228,11 @@ export const projects: Project[] = [
       "Managing large file streams without blocking the UI thread",
       "Securing the Electron bridge to prevent vulnerabilities",
     ],
-    screenshots: [],
+    screenshots: [
+      "/projects/drivesync/dashboard.png",
+      "/projects/drivesync/activity.png",
+      "/projects/drivesync/settings.png",
+    ],
   },
   {
     slug: "redline",
@@ -114,7 +251,16 @@ export const projects: Project[] = [
       "Managing complex SQL joins for social feeds",
       "Handling image uploads and server-side processing",
     ],
-    screenshots: [],
+    screenshots: [
+      "/projects/redline/home.png",
+      "/projects/redline/about.png",
+      "/projects/redline/register.png",
+      "/projects/redline/login.png",
+      "/projects/redline/my profile.png",
+      "/projects/redline/edit profile.png",
+      "/projects/redline/search users.png",
+      "/projects/redline/other user.png",
+    ],
   },
   {
     slug: "digit-recognizer",
@@ -133,7 +279,7 @@ export const projects: Project[] = [
       "Optimizing model inference for real-time results",
       "Designing an intuitive drawing interface",
     ],
-    screenshots: [],
+    screenshots: ["/projects/digit-recognizer/digit recognizer.png"],
   },
   {
     slug: "goal-tracker",
@@ -152,11 +298,18 @@ export const projects: Project[] = [
       "Implementing persistent user data across sessions",
       "Creating a drag-and-drop or checklist interface",
     ],
-    screenshots: [],
+    screenshots: [
+      "/projects/goal-tracker/home.png",
+      "/projects/goal-tracker/login.png",
+      "/projects/goal-tracker/register.png",
+      "/projects/goal-tracker/calendar-1.png",
+      "/projects/goal-tracker/calendar-2.png",
+      "/projects/goal-tracker/create goal.png",
+    ],
   },
   {
     slug: "game-launcher",
-    title: "Web Game Hub",
+    title: "Web Game Launcher",
     description:
       "An interactive gaming portal with custom idle games, a points-based economy, and a shop.",
     tech: ["HTML", "JavaScript", "EJS", "CSS", "Node.js"],
@@ -171,7 +324,15 @@ export const projects: Project[] = [
       "Designing a balanced virtual economy and shop prices",
       "Managing dynamic templates using EJS",
     ],
-    screenshots: [],
+    screenshots: [
+      "/projects/websitegamelauncher/home.png",
+      "/projects/websitegamelauncher/minesweeper.png",
+      "/projects/websitegamelauncher/idle atom.png",
+      "/projects/websitegamelauncher/ttyd.png",
+      "/projects/websitegamelauncher/tic-tac-toe.png",
+      "/projects/websitegamelauncher/login.png",
+      "/projects/websitegamelauncher/register.png",
+    ],
   },
   {
     slug: "bootify",
@@ -190,7 +351,7 @@ export const projects: Project[] = [
       "Securely handling SMTP credentials",
       "Ensuring the app waits for network connectivity before sending",
     ],
-    screenshots: [],
+    screenshots: ["/projects/bootify/bootify.png"],
   },
   {
     slug: "discord-bot-dashboard",
