@@ -9,16 +9,24 @@ export default function VisitorCounter({ className }: { className?: string }) {
 
   useEffect(() => {
     async function trackVisit() {
-      const hasVisited = localStorage.getItem("portfolio_visited");
+      try {
+        const hasVisited = localStorage.getItem("portfolio_visited");
 
-      if (pathname === "/" && !hasVisited) {
-        await fetch("/api/visits", { method: "POST" });
-        localStorage.setItem("portfolio_visited", Date.now().toString());
+        if (pathname === "/" && !hasVisited) {
+          const incrementResponse = await fetch("/api/visits", { method: "POST" });
+          if (incrementResponse.ok) {
+            localStorage.setItem("portfolio_visited", Date.now().toString());
+          }
+        }
+
+        const res = await fetch("/api/visits");
+        if (!res.ok) return;
+
+        const data = await res.json();
+        if (typeof data.visits === "number") setVisits(data.visits);
+      } catch {
+        return;
       }
-
-      const res = await fetch("/api/visits");
-      const data = await res.json();
-      setVisits(data.visits);
     }
 
     trackVisit();

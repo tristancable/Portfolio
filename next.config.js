@@ -2,6 +2,9 @@ const path = require("path");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    qualities: [75, 100],
+  },
   turbopack: {
     root: __dirname,
     resolveAlias: {

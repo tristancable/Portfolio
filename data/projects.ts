@@ -82,6 +82,28 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "bannershift",
+    title: "BannerShift",
+    description:
+      "A Windows tray app that lets you reposition toast notifications, choose a monitor, adjust transparency, and customize notification sounds per app.",
+    tech: ["C#", ".NET 8", "WinForms", "Win32", "TypeScript", "React", "Vite", "CSS", "HTML"],
+    github: "https://github.com/tristancable/bannershift",
+    live: "",
+    download:
+      "https://github.com/tristancable/BannerShift/releases/latest/download/BannerShift.exe",
+    problem:
+      "Windows notification banners offer limited control over where they appear and how they behave, especially across multi-monitor setups.",
+    solution:
+      "Built a .NET 8 Windows tray app that repositions real toast windows and provides controls for corner or custom placement, monitor selection, transparency, click-through, startup behavior, and per-app sounds. A React and Vite preview UI lets users configure and export settings outside the Windows app.",
+    challenges: [
+      "Finding Windows toast windows reliably and repositioning them through Win32 APIs",
+      "Supporting custom positions and preferred monitors in multi-display setups",
+      "Applying transparency and click-through behavior without disrupting notifications",
+      "Keeping the settings preview and Windows app aligned through an exported configuration file",
+    ],
+    screenshots: ["/projects/bannershift/home.png"],
+  },
+  {
     slug: "distributed-systems",
     title: "Retro Video Game Exchange",
     description:

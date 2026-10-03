@@ -1,17 +1,34 @@
 import { Redis } from "@upstash/redis";
 
-const redis = Redis.fromEnv();
+const redis =
+    process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+        ? Redis.fromEnv()
+        : null;
+
+function unavailable() {
+    return Response.json({ error: "Visitor counter unavailable" }, { status: 503 });
+}
 
 // GET = read visitor count
 export async function GET() {
-    const visits = await redis.get<number>("portfolio-visits") || 0;
+    if (!redis) return unavailable();
 
-    return Response.json({ visits });
+    try {
+        const visits = await redis.get<number>("portfolio-visits") || 0;
+        return Response.json({ visits });
+    } catch {
+        return unavailable();
+    }
 }
 
 // POST = increment visitor count
 export async function POST() {
-    const visits = await redis.incr("portfolio-visits");
+    if (!redis) return unavailable();
 
-    return Response.json({ visits });
+    try {
+        const visits = await redis.incr("portfolio-visits");
+        return Response.json({ visits });
+    } catch {
+        return unavailable();
+    }
 }

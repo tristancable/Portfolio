@@ -95,6 +95,7 @@ const ProjectCard = memo(({ project }: ProjectCardProps) => {
                     alt={project.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
+                    quality={100}
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </motion.div>

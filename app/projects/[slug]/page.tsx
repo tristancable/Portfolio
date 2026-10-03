@@ -120,6 +120,16 @@ export default async function ProjectPage({
 
         <AnimatedSection>
           <div className="flex flex-wrap gap-4 mt-8">
+            {project.download && (
+              <a
+                href={project.download}
+                className="group px-6 py-3 bg-bone text-ink rounded-sm font-medium flex items-center gap-2 transition hover:opacity-90"
+              >
+                Download for Windows
+                <span className="group-hover:translate-x-1 transition">↓</span>
+              </a>
+            )}
+
             {project.github && (
               <a
                 href={project.github}

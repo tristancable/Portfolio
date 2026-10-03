@@ -5,6 +5,7 @@ export interface Project {
     tech: string[];
     github: string;
     live?: string;
+    download?: string;
     problem: string;
     solution: string;
     challenges: string[];
